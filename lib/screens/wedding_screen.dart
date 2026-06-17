@@ -202,15 +202,25 @@ class _WeddingScreenState extends State<WeddingScreen> with SingleTickerProvider
     final Size size = MediaQuery.of(context).size;
     final double fullWidth = size.width;
     // Responsive scaling: use width on mobile, use a proportion of height on web/desktop
-    final double screenWidth = size.width > size.height ? size.height * 0.8 : size.width;
+    final double screenWidth = size.width > size.height ? size.height * 0.5 : size.width;
     final double screenHeight = size.height;
     
     final double slideDistance = screenHeight * 0.3;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFFCFAF5),
-      body: SafeArea(
-        child: Center(
+      backgroundColor: Colors.black,
+      body: Center(
+        child: Container(
+          width: screenWidth,
+          height: double.infinity,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+            image: AssetImage('assets/images/thirdbg.jpeg'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: SafeArea(
+          child: Center(
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -388,6 +398,8 @@ class _WeddingScreenState extends State<WeddingScreen> with SingleTickerProvider
             ),
           ),
         ),
+      ),
+      ),
       ),
     );
   }

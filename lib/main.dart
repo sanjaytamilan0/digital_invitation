@@ -111,28 +111,41 @@ class _InvitationScreenState extends State<InvitationScreen> with SingleTickerPr
     final Size size = MediaQuery.of(context).size;
     final double fullWidth = size.width;
     // Responsive scaling: use width on mobile, use a proportion of height on web/desktop
-    final double screenWidth = size.width > size.height ? size.height * 0.8 : size.width;
+    final double screenWidth = size.width > size.height ? size.height * 0.5 : size.width;
     final double screenHeight = size.height;
 
     // The user requested 30% extra bottom distance for the text slide.
     final double slideDistance = screenHeight * 0.3; 
 
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Center(
-        child: SingleChildScrollView(
+        child: Container(
+          width: screenWidth,
+          height: double.infinity,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/first.jpg.jpeg'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Align(
+          alignment: Alignment.topCenter,
+          child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SizedBox(height: screenHeight * 0.18),
               // Animated Monogram
               _buildAnimatedMonogram(screenWidth),
-              SizedBox(height: screenWidth * 0.05),
+              SizedBox(height: screenWidth * 0.03),
               
               // Main Names (Letter by Letter Wave with Rotation)
               _buildWavyText(
                 text: 'AKSHAY & KRISHNA',
                 style: GoogleFonts.cinzel(
-                  fontSize: screenWidth * 0.07,
+                  fontSize: screenWidth * 0.05,
                   fontWeight: FontWeight.w600,
                   letterSpacing: 2.0,
                   color: const Color(0xFF8C8665),
@@ -149,7 +162,7 @@ class _InvitationScreenState extends State<InvitationScreen> with SingleTickerPr
               _buildWavyText(
                 text: '#KRIAKSH WEDDING',
                 style: GoogleFonts.cinzel(
-                  fontSize: screenWidth * 0.035,
+                  fontSize: screenWidth * 0.025,
                   fontWeight: FontWeight.w500,
                   letterSpacing: 3.0,
                   color: const Color(0xFFA5A181),
@@ -162,6 +175,8 @@ class _InvitationScreenState extends State<InvitationScreen> with SingleTickerPr
             ],
           ),
         ),
+      ),
+      ),
       ),
     );
   }
@@ -235,7 +250,7 @@ class _InvitationScreenState extends State<InvitationScreen> with SingleTickerPr
   }) {
     Widget sizedChild = SizedBox(
       width: screenWidth * 0.8,
-      height: screenWidth * 0.8,
+      height: screenWidth * 0.4,
       child: Center(child: child),
     );
 
@@ -281,7 +296,7 @@ class _InvitationScreenState extends State<InvitationScreen> with SingleTickerPr
           end: Alignment.bottomRight,
         ).createShader(Rect.fromLTWH(0.0, 0.0, screenWidth * 0.5, screenWidth * 0.5));
 
-        final monogramFontSize = screenWidth * 0.35;
+        final monogramFontSize = screenWidth * 0.25;
 
         Widget letterA = Text(
           'A',
