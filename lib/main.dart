@@ -125,7 +125,7 @@ class _InvitationScreenState extends State<InvitationScreen> with SingleTickerPr
           height: double.infinity,
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/images/first.jpg.jpeg'),
+              image: AssetImage('assets/images/initalbg.jpg.jpeg'),
               fit: BoxFit.cover,
             ),
           ),
